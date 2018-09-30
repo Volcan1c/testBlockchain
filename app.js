@@ -26,6 +26,17 @@ class Block {
 		return this.hash(this.merkleH, this.comment, this.nonce, this.date, this.prevHash) === this.newHash;
 	}
 
+	verifyBlockchain(blockChain) {
+		let bool = true;
+		for (i = 1; i < blockChain.length; i++) {
+			if (blockChain[i].prevHash !== blockChain[i-1].newHash) {
+				console.log(`Inconsistency on block ${blockChain[i].newHash} made on ${blockChain[i].date}.`);
+				bool = false;
+			}
+		}
+		return bool;
+	}
+
 }
 
 let now = Date.now();
@@ -51,3 +62,8 @@ for (i=0; i<10; i++) {
 }
 
 console.log(blockChain);
+console.log(blockChain[blockChain.length - 1].verifyBlockchain(blockChain));
+
+blockChain[blockChain.length - 2].newHash = "sdfgasd";
+
+console.log(blockChain[blockChain.length - 1].verifyBlockchain(blockChain));
