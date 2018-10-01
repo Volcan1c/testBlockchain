@@ -41,13 +41,6 @@ class Block {
 
 let now = Date.now();
 let block1 = new Block("abc", "genesis", "12345", now, " ", sha256("abc"+"genesis"+"12345"+now+" "));
-// console.log(block1.newHash);
-// console.log(block1.verifyHash());
-
-// now = Date.now();
-// block2 = block1.createNewBlock("bca", "hello", "12346", now);
-// console.log(block2);
-// console.log(block2.verifyHash());
 
 let blockChain = [block1];
 
@@ -57,16 +50,6 @@ let newBlockInfo = {
 	nonce: ["1234","2345","3456","4567","5678","6789","7890","8901","9012","0123"],
 	date: [Date.now()+1,Date.now()+2,Date.now()+3,Date.now()+4,Date.now()+5,Date.now()+6,Date.now()+7,Date.now()+8,Date.now()+9,Date.now()+10]
 }
-// for (i=0; i<10; i++) {
-// 	blockChain.push(blockChain[blockChain.length - 1].createNewBlock(newBlockInfo.merkleH[i],newBlockInfo.comment[i],newBlockInfo.nonce[i],newBlockInfo.date[i]));
-// }
-
-// console.log(blockChain);
-// console.log(blockChain[blockChain.length - 1].verifyBlockchain(blockChain));
-
-// blockChain[blockChain.length - 2].newHash = "sdfgasd";
-
-// console.log(blockChain[blockChain.length - 1].verifyBlockchain(blockChain));
 
 exports.newInfo = function () {
     return newBlockInfo;
@@ -79,3 +62,22 @@ exports.BlockF = function () {
 exports.blockChainF = function() {
 	return blockChain;
 }
+
+// console.log(block1.newHash);
+// console.log(block1.verifyHash());
+
+// now = Date.now();
+// block2 = block1.createNewBlock("bca", "hello", "12346", now);
+// console.log(block2);
+// console.log(block2.verifyHash());
+
+// for (i=0; i<10; i++) {
+// 	blockChain.push(blockChain[blockChain.length - 1].createNewBlock(newBlockInfo.merkleH[i],newBlockInfo.comment[i],newBlockInfo.nonce[i],newBlockInfo.date[i]));
+// }
+
+// console.log(blockChain);
+// console.log(blockChain[blockChain.length - 1].verifyBlockchain(blockChain));
+
+// blockChain[blockChain.length - 2].newHash = "sdfgasd";
+
+// console.log(blockChain[blockChain.length - 1].verifyBlockchain(blockChain));
