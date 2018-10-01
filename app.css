@@ -1,0 +1,10 @@
+.bigDiv {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+.block {
+    border: 1px solid blue;
+    margin-bottom: 5px;
+    padding-left: 15px;
+}

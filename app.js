@@ -12,8 +12,13 @@ window.onload = function() {
         let newBlock = blockChain[blockChain.length-1].createNewBlock(newBlockInfo.merkleH[blockChain.length],newBlockInfo.comment[blockChain.length],newBlockInfo.nonce[blockChain.length],newBlockInfo.date[blockChain.length]);
         blockChain.push(newBlock);
         let newText = "";
-        blockChain.forEach((block) => {
-            newText += `<div class="block"><p>Block Hash: ${block.newHash}</p></div>`;
+        blockChain.forEach((block, index) => {
+            newText += `<div class="block">
+                <p>Block${index}</p>
+                <p>Block Hash: ${block.newHash}</p>
+                <p>Prev. Block Hash: ${block.prevHash}</p>
+                <p>Message: ${block.comment}</p>
+                </div>`;
         })
         let removing = document.querySelector(".bigDiv");
         removing.parentNode.removeChild(removing);
