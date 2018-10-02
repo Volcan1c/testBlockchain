@@ -1,10 +1,30 @@
 .bigDiv {
     border: 1px solid black;
     padding: 10px;
+    border-radius: 10px;
 }
 
 .block {
     border: 1px solid blue;
     margin-bottom: 5px;
     padding-left: 15px;
+    border-radius: 10px;
+}
+
+i {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    margin-left: 48%;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+button {
+    margin-left: 40%;
+    margin-bottom: 10px;
 }

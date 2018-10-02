@@ -114,7 +114,8 @@ window.onload = function() {
                 <p>Prev. Block Hash: ${block.prevHash}</p>
                 <p>Message: ${block.comment}</p>
                 <p>Nonce: ${block.nonce}</p>
-                </div>`;
+                </div>
+                <p><i class="arrow down"></i></p>`;
         })
         let removing = document.querySelector(".bigDiv");
         removing.parentNode.removeChild(removing);
