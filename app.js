@@ -9,7 +9,7 @@ let newBlockInfo = newInfo();
 window.onload = function() {
     let button = document.querySelector("#newBlock");
     button.addEventListener("click", () => {
-        let newBlock = blockChain[blockChain.length-1].createNewBlock(newBlockInfo.merkleH[blockChain.length],newBlockInfo.comment[blockChain.length],newBlockInfo.nonce[blockChain.length],newBlockInfo.date[blockChain.length]);
+        let newBlock = blockChain[blockChain.length-1].mineNewBlock(newBlockInfo.merkleH[blockChain.length],newBlockInfo.comment[blockChain.length],newBlockInfo.date[blockChain.length]);
         blockChain.push(newBlock);
         let newText = "";
         blockChain.forEach((block, index) => {
@@ -18,6 +18,7 @@ window.onload = function() {
                 <p>Block Hash: ${block.newHash}</p>
                 <p>Prev. Block Hash: ${block.prevHash}</p>
                 <p>Message: ${block.comment}</p>
+                <p>Nonce: ${block.nonce}</p>
                 </div>`;
         })
         let removing = document.querySelector(".bigDiv");

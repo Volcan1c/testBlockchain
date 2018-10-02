@@ -38,6 +38,16 @@ class Block {
 		return bool;
 	}
 
+	mineNewBlock(merkleH, comment, date) {
+		let nonceTry = "0001";
+		let hashTry = this.hash(merkleH, comment, nonceTry, date, this.newHash);
+		while (hashTry > "000ffff49bf699681495abaab3f41004898fafd55e1571c7d1ca2cbfe5171945") {
+			nonceTry = String(Number(nonceTry)+1);
+			hashTry = this.hash(merkleH, comment, nonceTry, date, this.newHash);
+		}
+		return this.createNewBlock(merkleH, comment, nonceTry, date);
+	}
+
 }
 
 let now = Date.now();
@@ -94,7 +104,7 @@ let newBlockInfo = newInfo();
 window.onload = function() {
     let button = document.querySelector("#newBlock");
     button.addEventListener("click", () => {
-        let newBlock = blockChain[blockChain.length-1].createNewBlock(newBlockInfo.merkleH[blockChain.length],newBlockInfo.comment[blockChain.length],newBlockInfo.nonce[blockChain.length],newBlockInfo.date[blockChain.length]);
+        let newBlock = blockChain[blockChain.length-1].mineNewBlock(newBlockInfo.merkleH[blockChain.length],newBlockInfo.comment[blockChain.length],newBlockInfo.date[blockChain.length]);
         blockChain.push(newBlock);
         let newText = "";
         blockChain.forEach((block, index) => {
@@ -103,6 +113,7 @@ window.onload = function() {
                 <p>Block Hash: ${block.newHash}</p>
                 <p>Prev. Block Hash: ${block.prevHash}</p>
                 <p>Message: ${block.comment}</p>
+                <p>Nonce: ${block.nonce}</p>
                 </div>`;
         })
         let removing = document.querySelector(".bigDiv");

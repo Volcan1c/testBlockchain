@@ -37,6 +37,16 @@ class Block {
 		return bool;
 	}
 
+	mineNewBlock(merkleH, comment, date) {
+		let nonceTry = "0001";
+		let hashTry = this.hash(merkleH, comment, nonceTry, date, this.newHash);
+		while (hashTry > "000ffff49bf699681495abaab3f41004898fafd55e1571c7d1ca2cbfe5171945") {
+			nonceTry = String(Number(nonceTry)+1);
+			hashTry = this.hash(merkleH, comment, nonceTry, date, this.newHash);
+		}
+		return this.createNewBlock(merkleH, comment, nonceTry, date);
+	}
+
 }
 
 let now = Date.now();
